@@ -1,4 +1,18 @@
-unzip dd734beb-6e4c-45e6-bacf-6150d65d4bd1_Export-e38dd269-ce21-4bb3-8192-90348079a628.zip 
-rm dd734beb-6e4c-45e6-bacf-6150d65d4bd1_Export-e38dd269-ce21-4bb3-8192-90348079a628.zip
-mv "CTF 4554b692b27c40e08d1bc1bc51772fcf.html" index.html
+# Find the first ZIP file
+zipfile=$(ls *.zip | head -n 1)
 
+# Unzip it
+unzip "$zipfile"
+
+# Remove it
+rm "$zipfile"
+
+htmlfile=$(ls *.html | head -n 1)
+
+mv "$htmlfile" index.html
+
+git add --all
+
+git commit -m "website change"
+
+git push -u origin main
